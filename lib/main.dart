@@ -4,15 +4,61 @@ void main() {
   runApp(const MainApp());
 }
 
+class SamplePage {
+  const SamplePage({
+    required this.page,
+    required this.title,
+  });
+  final Widget page;
+  final String title;
+}
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
+  static const samples = <SamplePage>[
+    SamplePage(page: Scaffold(), title: 'ラジオボタン'),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFFE30B21),
+          elevation: 0,
+          title: const Text(
+            'Flutter道場サンプル集',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        body: ListView.builder(
+          itemCount: samples.length,
+          itemBuilder: (context, index) {
+            final sample = samples[index];
+
+            return ListTile(
+              title: Text(sample.title),
+              leading: const Radio(
+                value: null,
+                groupValue: null,
+                onChanged: null,
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return sample.page;
+                    },
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );
