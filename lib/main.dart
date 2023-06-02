@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground/sample_chat_gpt.dart';
 import 'package:playground/sample_chip.dart';
 import 'package:playground/sample_radio_button.dart';
 
@@ -35,6 +36,13 @@ class MainApp extends StatelessWidget {
       title: 'チップ',
       leading: Chip(
         label: Text('chip'),
+      ),
+    ),
+    SamplePage(
+      page: SampleChatGPT(),
+      title: 'ChatGPT',
+      leading: Icon(
+        Icons.message,
       ),
     ),
   ];
