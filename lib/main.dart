@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground/sample_radio_button.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   static const samples = <SamplePage>[
-    SamplePage(page: Scaffold(), title: 'ラジオボタン'),
+    SamplePage(page: SampleRadioButton(), title: 'ラジオボタン'),
   ];
 
   @override
